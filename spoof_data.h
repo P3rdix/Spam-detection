@@ -43,7 +43,6 @@ struct call* generate_log(int days, int max, int size, struct data* init){
     struct call* new = (struct call*)malloc(sizeof(struct call)*days*24);
     int n = 0;
     for(int i=0;i<days*24;i++){
-        printf("n = %d\n",n);
         if(n > 60){
             n-=60;
             (new+i)->start_min = -1;
@@ -55,7 +54,6 @@ struct call* generate_log(int days, int max, int size, struct data* init){
         l-=1;
         (new+i)->time = rand()%10;
         (new+i)->start_min = n;
-        printf("   %d    ",(new+i)->start_min);
         (new+i)->recipient = init+rand()%size;
         (new+i)->recieved = rand()%2;
         n += (new+i)->time + rand()%(60-n/2);
